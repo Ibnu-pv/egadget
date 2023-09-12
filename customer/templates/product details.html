@@ -1,0 +1,63 @@
+{% extends 'navbar.html' %}
+{% block content %}
+    <!-- <h1 style="background-color: rgb(195, 37, 230, 0.361); color:azure; text-align:center" >Product detail</h1> -->
+    <div class="row">
+        <div class="col-5" >
+            <img style="margin-left: 30px;" src="{{data.image.url}}" alt="img" height="300px" width="300px">
+        </div>
+        <div style="background-color: rgb(195, 37, 230, 0.361);" class="col">
+          <h1 style="color: white;">Product detail</h1><br>
+            <ul style="background-color: rgb(195, 37, 230, 0.361);" class="list-group jumbotron">
+              
+                <li class="list-group-item">{{data.name}}</li>
+                <h2 style="background-color: white;"><i class="fa-solid fa-indian-rupee-sign"></i> {{data.price}}</h2>
+                <li class="list-group-item" >{{data.category}}</li>
+                <li class="list-group-item" >{{data.description}}</li>
+
+
+
+
+            </ul><br>
+            <a class="btn btn-success" href="">Buy Now</a>
+            
+              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                <span class="material-symbols-outlined">
+                  add_shopping_cart
+                  </span>
+              </button>
+
+           
+
+        </div>
+         
+        
+    </div>
+    <div style="background-color: rgba(195, 37, 230, 0.361);" class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div style="background-color: rgba(195, 37, 230, 0.361);" class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Quantity</h5>
+            <button type="button" class="close btn btn-danger" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div style="background-color: rgba(195, 37, 230, 0.361);" class="modal-body">
+            <form action="{% url 'acart' data.id %}" method="post">
+              {% csrf_token %}
+              <label for="">Add Quantity</label>
+              <input type="number" name="qnt" style="width: 70px;" id=""><br><br>
+              <div style="margin-left: 178px; margin-top: -61px;"><button  class="btn btn-success" >Add</button></div>
+            </form>
+          </div>
+          <div style="background-color: rgba(195, 37, 230, 0.361);" class="modal-footer">
+            <!-- <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button> -->
+            <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endblock content %}
+    
+      
+    
+ 
